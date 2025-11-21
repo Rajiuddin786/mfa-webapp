@@ -34,17 +34,25 @@ passwordInput.addEventListener("keyup", (event) => {
             press_time: pressTimes[key].toFixed(3),
             release_time: currentTime.toFixed(3),
             dwell_time: dwell.toFixed(3),
-            flight_time: 0.0
+            flight_time: 0.0,
+            press_press:0.0,
+            release_release:0.0
         });
 
         delete pressTimes[key];
-
         // Compute flight time for previous key
         if (keystrokes.length > 1) {
             const prev = keystrokes[keystrokes.length - 2];
             keystrokes[keystrokes.length - 2].flight_time = (
                 keystrokes[keystrokes.length - 1].press_time - prev.release_time
             ).toFixed(3);
+            keystrokes[keystrokes.length-1].press_press=(
+                keystrokes[keystrokes.length-1].press_time-prev.press_time
+            ).toFixed(3);
+            keystrokes[keystrokes.length-1].release_release=(
+                keystrokes[keystrokes.length-1].release_time-prev.release_time
+            ).toFixed(3);
+            console.log(keystrokes)
         }
     }
 });

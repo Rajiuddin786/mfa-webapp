@@ -3,32 +3,46 @@ import numpy as np
 import pickle
 
 def extract_features(df):
-
-    dwell = df['dwell_time'].dropna()
-    flight = df['flight_time'].dropna()
+    dwell_time = df['dwell_time'].dropna()
+    flight_time = df['flight_time'].dropna()
+    press_press=df['press_press'].dropna()
+    release_release=df['release_realease'].dropna()
     
     features = {
-        'dwell_mean': dwell.mean(),
-        'dwell_std': dwell.std(),
-        'dwell_median': dwell.median(),
-        'dwell_min': dwell.min(),
-        'dwell_max': dwell.max(),
-        'dwell_q25': dwell.quantile(0.25),
-        'dwell_q75': dwell.quantile(0.75),
-        'flight_mean': flight.mean(),
-        'flight_std': flight.std(),
-        'flight_median': flight.median(),
-        'flight_min': flight.min(),
-        'flight_max': flight.max(),
-        'flight_q25': flight.quantile(0.25),
-        'flight_q75': flight.quantile(0.75),
+        'dwell_mean': dwell_time.mean(),
+        'dwell_std': dwell_time.std(),
+        'dwell_median': dwell_time.median(),
+        'dwell_min': dwell_time.min(),
+        'dwell_max': dwell_time.max(),
+        'dwell_q25': dwell_time.quantile(0.25),
+        'dwell_q75': dwell_time.quantile(0.75),
+        'flight_mean': flight_time.mean(),
+        'flight_std': flight_time.std(),
+        'flight_median': flight_time.median(),
+        'flight_min': flight_time.min(),
+        'flight_max': flight_time.max(),
+        'flight_q25': flight_time.quantile(0.25),
+        'flight_q75': flight_time.quantile(0.75),
+        'press_press_mean': press_press.mean(),
+        'press_press_std': press_press.std(),
+        'press_press_median': press_press.median(),
+        'press_press_min': press_press.min(),
+        'press_press_max': press_press.max(),
+        'press_press_q25': press_press.quantile(0.25),
+        'press_press_q75': press_press.quantile(0.75),
+        'release_release_mean': release_release.mean(),
+        'release_release_std': release_release.std(),
+        'release_release_median': release_release.median(),
+        'release_release_min': release_release.min(),
+        'release_release_max': release_release.max(),
+        'release_release_q25': release_release.quantile(0.25),
+        'release_release_q75': release_release.quantile(0.75),
     }
     
     return features
 
 
-
-with open('Model/password_keystroke_model.pkl', 'rb') as f:
+with open('models/model1.pkl', 'rb') as f:
     model_data = pickle.load(f)
 
 model = model_data['model']
