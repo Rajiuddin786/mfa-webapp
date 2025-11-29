@@ -8,8 +8,8 @@ import os
 
 i=1
 csv_files=[]
-while os.path.exists(f"data/sample{i}"):
-    csv_files.append(f'data/sample{i}')
+while os.path.exists(f"data/sample{i}.csv"):
+    csv_files.append(f'data/sample{i}.csv')
     i+=1
 
 all_sequences = []

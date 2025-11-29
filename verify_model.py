@@ -42,7 +42,7 @@ def predict_user(df, scaler, model, seq_len=8, threshold=0.01):
     return ("ACCEPT" if avg_mse <= threshold else "REJECT", avg_mse)
 
 
-new_df = pd.read_csv('data/sample19.csv')
+new_df = pd.read_csv('data/sample20.csv')
 result, mse_score = predict_user(new_df, scaler, model, threshold=threshold)
 
 error_percent = mse_score * 100
